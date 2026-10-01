@@ -1570,7 +1570,7 @@ export async function renderHome(root, ctx) {
     { class: 'overview-head' },
     el('div', {},
       el('p', { class: 'overview-eyebrow', text: 'PULSE / OVERVIEW' }),
-      el('h1', { class: 'overview-title', text: '基础设施概览' }),
+      el('h1', { class: 'overview-title', text: '服务器概览' }),
       el('p', { class: 'overview-description', text: '服务器状态、资源负载与网络表现，一览掌握。' }),
     ),
     el('span', { class: 'overview-badge', text: '全局监控' }),
