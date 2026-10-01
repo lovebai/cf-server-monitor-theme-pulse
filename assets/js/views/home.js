@@ -1573,7 +1573,7 @@ export async function renderHome(root, ctx) {
       el('p', { class: 'overview-description', text: '服务器状态、资源负载与网络表现，一览掌握。' }),
     ),
     el('span', { class: 'overview-badge', text: '全局监控' }),
-    el('img', { class: 'sakura-girl', src: 'assets/sakura-girl.png', alt: '', 'aria-hidden': 'true' }),
+    el('img', { class: 'sakura-girl', src: 'assets/sakura-girl.webp', alt: '', 'aria-hidden': 'true' }),
   );
   view.append(overview, statsGrid, regionRow, toolbar, filterSummary, groupsBox);
   renderList();
