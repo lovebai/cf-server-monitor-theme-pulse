@@ -163,5 +163,12 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    ThreadingHTTPServer(("127.0.0.1", 8788), Handler).serve_forever()
+    with ThreadingHTTPServer(("127.0.0.1", 8788), Handler) as server:
+        host, port = server.server_address
+        print(f"HTTP 服务已启动：http://{host}:{port}/#", flush=True)
+        print("按 Ctrl+C 停止服务。", flush=True)
+        try:
+            server.serve_forever()
+        except KeyboardInterrupt:
+            print("\nHTTP 服务已停止。", flush=True)
 
