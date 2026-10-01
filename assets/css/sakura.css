@@ -1,0 +1,60 @@
+/* Sakura girl variant — isolated from the original Pulse palette. */
+:root { --radius: 22px; --radius-sm: 12px; }
+html[data-theme="light"] {
+  --accent: #b34b86; --accent-2: #9470c8; --ok: #278269;
+  --bg: #fff5fa; --panel: #fffafd; --panel-2: #f9edf6;
+  --border: #efd9e8; --border-strong: #d8a7c9;
+  --text: #51384f; --dim: #886b84; --track: #f0e0ee;
+  --shadow: 0 12px 32px #ae619416;
+}
+html[data-theme="dark"] {
+  --accent: #f0acd1; --accent-2: #bc9ceb; --ok: #8cd5b5;
+  --bg: #211925; --panel: #2e2333; --panel-2: #392b3f;
+  --border: #503950; --border-strong: #94658d;
+  --text: #f8e8f4; --dim: #c3a6bd; --track: #503950;
+  --shadow: 0 12px 32px #120b1b40;
+}
+body::before {
+  background: radial-gradient(ellipse at 5% 0, #e4b4dc24, transparent 55%),
+    radial-gradient(ellipse at 100% 30%, #c2a3ec24, transparent 55%),
+    radial-gradient(circle, #cb8ab31c 1.5px, transparent 2px);
+  background-size: auto, auto, 28px 28px;
+}
+.site-header { background: color-mix(in srgb, var(--panel) 84%, transparent); }
+.pulse-logo { width: 18px; height: 18px; background: var(--accent); border-radius: 7px 7px 7px 2px; transform: rotate(-35deg); box-shadow: none; }
+.pulse-logo::after { inset: 4px; border: 1px solid var(--panel); border-radius: 3px; animation: none; }
+.overview-head {
+  min-height: 210px; position: relative; overflow: hidden; padding: 32px;
+  border: 1px solid var(--border); border-radius: 26px; background: var(--panel);
+  box-shadow: var(--shadow); isolation: isolate;
+}
+.overview-head::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, #e9a1c51a, #c8aceb24); }
+.overview-copy { max-width: 65%; }
+.overview-eyebrow { letter-spacing: .2em; font-size: 12px; margin-bottom: 20px; }
+.overview-description { font-size: 15px; line-height: 1.9; max-width: 400px; }
+.overview-badge { align-self: flex-end; position: relative; z-index: 1; margin-right: 290px; background: var(--panel); color: var(--accent); border-color: var(--border-strong); }
+.sakura-girl { position: absolute; right: 18px; bottom: -22px; width: 290px; height: 261px; pointer-events: none; }
+.stat-card { border-radius: 20px; box-shadow: var(--shadow); }
+.stat-card::before { top: 25%; bottom: 25%; background: linear-gradient(var(--accent), var(--accent-2)); }
+.stat-label .ico { color: var(--accent-2); }
+.toolbar { box-shadow: 0 5px 20px #ae619408; }
+.srv-card { box-shadow: 0 4px 18px #ae619409; }
+.srv-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.meter-fill, .tile-bar i, .mini-bar i { background: linear-gradient(90deg, var(--accent-2), var(--accent)); }
+.meter-fill.lv-warn, .tile-bar i.lv-warn, .mini-bar i.lv-warn { background: var(--warn); }
+.meter-fill.lv-bad, .tile-bar i.lv-bad, .mini-bar i.lv-bad { background: var(--bad); }
+.group-title::before, .charts-title::before { width: 10px; height: 10px; border-radius: 3px; transform: rotate(45deg); vertical-align: 0; }
+.region-chip, .tag-chip, .chip { border-radius: 20px; }
+.seg-btn.active { background: color-mix(in srgb, var(--accent) 12%, var(--panel)); }
+.site-footer { color: var(--dim); }
+@media (max-width: 900px) {
+  .overview-badge { display: none; }
+  .overview-copy { max-width: 60%; }
+}
+@media (max-width: 640px) {
+  .overview-head { min-height: 165px; padding: 22px 18px; }
+  .overview-copy { max-width: 64%; }
+  .overview-eyebrow { font-size: 10px; letter-spacing: .12em; margin-bottom: 12px; }
+  .overview-description { font-size: 12px; }
+  .sakura-girl { width: 175px; height: 158px; right: -25px; bottom: -8px; }
+}
