@@ -33,7 +33,7 @@ body::before {
 .overview-eyebrow { letter-spacing: .2em; font-size: 12px; margin-bottom: 20px; }
 .overview-description { font-size: 15px; line-height: 1.9; max-width: 400px; }
 .overview-badge { align-self: flex-end; position: relative; z-index: 1; margin-right: 290px; background: var(--panel); color: var(--accent); border-color: var(--border-strong); }
-.sakura-girl { position: absolute; right: 18px; bottom: -22px; width: 290px; height: 261px; pointer-events: none; }
+.sakura-girl { position: absolute; right: 18px; bottom: -22px; width: 290px; height: 261px; object-fit: contain; object-position: bottom; pointer-events: none; }
 .stat-card { border-radius: 20px; box-shadow: var(--shadow); }
 .stat-card::before { top: 25%; bottom: 25%; background: linear-gradient(var(--accent), var(--accent-2)); }
 .stat-label .ico { color: var(--accent-2); }
