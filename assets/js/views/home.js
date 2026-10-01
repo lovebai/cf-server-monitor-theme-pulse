@@ -35,10 +35,10 @@ import {
   updateFlagImg,
   updateOsIconImg,
   wsTimeoutDialog,
-} from '../utils.js?v=1.3.0';
-import {getServers} from '../api.js?v=1.3.0';
-import {Playback, normalizeTs} from '../playback.js?v=1.3.0';
-import {MetricSocket} from '../ws.js?v=1.3.0';
+} from '../utils.js?v=1.3.1';
+import {getServers} from '../api.js?v=1.3.1';
+import {Playback, normalizeTs} from '../playback.js?v=1.3.1';
+import {MetricSocket} from '../ws.js?v=1.3.1';
 
 const MODE_LABELS = { bar: '条形', ring: '圆环', table: '表格' };
 
@@ -1294,13 +1294,14 @@ export async function renderHome(root, ctx) {
   const search = el('input', {
     class: 'search-input',
     type: 'search',
-    placeholder: '搜索…',
+    placeholder: '搜索名称、分组、地区或系统…',
+    'aria-label': '搜索服务器',
     value: initialQuery,
   });
   const segBtns = new Map();
   const seg = el(
     'div',
-    { class: 'seg' },
+    { class: 'seg', role: 'group', 'aria-label': '服务器展示方式' },
     Object.entries(MODE_LABELS).map(([mode, label]) => {
       const b = el('button', { class: 'seg-btn', text: label, dataset: { mode } });
       b.addEventListener('click', () => {
@@ -1320,11 +1321,27 @@ export async function renderHome(root, ctx) {
   );
 
   function syncSeg() {
-    for (const [m, b] of segBtns) b.classList.toggle('active', m === state.mode);
+    for (const [m, b] of segBtns) {
+      b.classList.toggle('active', m === state.mode);
+      b.setAttribute('aria-pressed', String(m === state.mode));
+    }
   }
   syncSeg();
 
   const toolbar = el('div', { class: 'toolbar' }, search, seg);
+  const resultCount = el('span', { class: 'filter-count', role: 'status', 'aria-live': 'polite' });
+  const clearFilter = el('button', { class: 'filter-reset', text: '清除筛选', hidden: true });
+  clearFilter.addEventListener('click', () => {
+    search.value = '';
+    state.filter = '';
+    state.region = '';
+    syncRegionChips();
+    syncUrl();
+    applyFilter();
+    refreshStats();
+    search.focus();
+  });
+  const filterSummary = el('div', { class: 'filter-summary' }, resultCount, clearFilter);
 
   // ----- 服务器列表 -----
   const groupsBox = el('div', { class: 'groups' });
@@ -1407,8 +1424,15 @@ export async function renderHome(root, ctx) {
         if (show) visible += 1;
       }
       sec.style.display = visible ? '' : 'none';
+      const count = sec.querySelector('.group-count');
+      if (count) count.textContent = `${visible} 台`;
       visibleTotal += visible;
     });
+    const filtered = Boolean(state.filter || state.region);
+    resultCount.textContent = filtered
+      ? `匹配 ${visibleTotal} / ${dataMap.size} 台服务器`
+      : `共 ${dataMap.size} 台服务器`;
+    clearFilter.hidden = !filtered;
     let note = groupsBox.querySelector('.filter-empty');
     if (!visibleTotal && dataMap.size) {
       if (!note) {
@@ -1551,7 +1575,7 @@ export async function renderHome(root, ctx) {
     ),
     el('span', { class: 'overview-badge', text: '全局监控' }),
   );
-  view.append(overview, statsGrid, regionRow, toolbar, groupsBox);
+  view.append(overview, statsGrid, regionRow, toolbar, filterSummary, groupsBox);
   renderList();
   refreshStats();
   // 在线汇率就绪后刷新一次剩余价值（缓存命中时同步返回）

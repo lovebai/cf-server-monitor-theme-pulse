@@ -14,7 +14,7 @@
 // (+Ns) 滞后文本、在线状态刷新全部在同一个 tick 上发生，所有卡片以完全
 // 相同的频率变化，避免各服务器各自计时导致的杂乱跳变。
 
-import {serverNow} from './utils.js?v=1.3.0';
+import {serverNow} from './utils.js?v=1.3.1';
 
 const MAX_BUFFER_SAMPLES = 600;
 const TICK_MS = 1000;

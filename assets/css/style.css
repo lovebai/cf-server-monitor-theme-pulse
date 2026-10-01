@@ -2100,3 +2100,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Filter feedback keeps the list count aligned with what is visible. */
+.filter-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 32px; margin: -16px 2px 18px; }
+.filter-count { color: var(--dim); font-size: 12px; }
+.filter-reset { color: var(--accent); background: transparent; border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; }
+.filter-reset:hover { background: var(--panel-2); border-color: var(--accent); }
+.filter-reset[hidden] { display: none; }
+.stat-value .stat-speed { min-width: 0; }
+.stat-value .stat-side { display: block; margin-top: 4px; white-space: normal; }
+@media (max-width: 640px) {
+  .site-footer { font-size: 11px; line-height: 1.8; overflow-wrap: anywhere; }
+}
