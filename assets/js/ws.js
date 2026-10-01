@@ -6,7 +6,7 @@
 // - 跨域 API 基座时把管理端 JWT 拼到 WS URL（官方同 Host 免带，跨域必须带）
 // - batchUpdate 的服务端时间戳同时用于校准全局服务器时钟（见 utils.syncServerTime）
 
-import {normalizeWsTimeoutMinutes, syncServerTime} from './utils.js?v=1.2.2';
+import {normalizeWsTimeoutMinutes, syncServerTime} from './utils.js?v=1.3.0';
 
 export class MetricSocket {
   /**

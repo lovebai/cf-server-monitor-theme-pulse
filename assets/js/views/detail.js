@@ -34,11 +34,11 @@ import {
   updateFlagImg,
   updateOsIconImg,
   wsTimeoutDialog,
-} from '../utils.js?v=1.2.2';
-import {getAuthToken, getHistory, getServer, getServers} from '../api.js?v=1.2.2';
-import {Playback, normalizeTs} from '../playback.js?v=1.2.2';
-import {MetricSocket} from '../ws.js?v=1.2.2';
-import {LineChart} from '../charts.js?v=1.2.2';
+} from '../utils.js?v=1.3.0';
+import {getAuthToken, getHistory, getServer, getServers} from '../api.js?v=1.3.0';
+import {Playback, normalizeTs} from '../playback.js?v=1.3.0';
+import {MetricSocket} from '../ws.js?v=1.3.0';
+import {LineChart} from '../charts.js?v=1.3.0';
 
 const COLORS = {
   teal: '#2dd4bf',

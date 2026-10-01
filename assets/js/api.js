@@ -9,7 +9,7 @@
 //   用于解锁 1 小时以上的历史查询；主题本身不提供登录功能。
 // - 站点开启 Turnstile 时，先完成人机验证换取 turnstile_verified 凭证再请求数据。
 
-import {el, syncServerTime} from './utils.js?v=1.2.2';
+import {el, syncServerTime} from './utils.js?v=1.3.0';
 
 const API_BASE = (window.__API_BASE__ || '').replace(/\/$/, '');
 const CRED_KEY = 'probe_ts_cred';

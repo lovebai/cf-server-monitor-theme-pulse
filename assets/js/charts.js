@@ -3,7 +3,7 @@
 // - 悬浮十字线 + tooltip
 // - ResizeObserver 自适应宽度
 
-import {el, fmtClock, fmtDateTime, fmtTimeShort, serverNow, svg} from './utils.js?v=1.2.2';
+import {el, fmtClock, fmtDateTime, fmtTimeShort, serverNow, svg} from './utils.js?v=1.3.0';
 
 let chartUid = 0;
 

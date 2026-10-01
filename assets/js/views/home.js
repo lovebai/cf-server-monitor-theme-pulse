@@ -35,10 +35,10 @@ import {
   updateFlagImg,
   updateOsIconImg,
   wsTimeoutDialog,
-} from '../utils.js?v=1.2.2';
-import {getServers} from '../api.js?v=1.2.2';
-import {Playback, normalizeTs} from '../playback.js?v=1.2.2';
-import {MetricSocket} from '../ws.js?v=1.2.2';
+} from '../utils.js?v=1.3.0';
+import {getServers} from '../api.js?v=1.3.0';
+import {Playback, normalizeTs} from '../playback.js?v=1.3.0';
+import {MetricSocket} from '../ws.js?v=1.3.0';
 
 const MODE_LABELS = { bar: '条形', ring: '圆环', table: '表格' };
 
@@ -1541,7 +1541,17 @@ export async function renderHome(root, ctx) {
 
   // ----- 组装 -----
   view.textContent = '';
-  view.append(statsGrid, regionRow, toolbar, groupsBox);
+  const overview = el(
+    'div',
+    { class: 'overview-head' },
+    el('div', {},
+      el('p', { class: 'overview-eyebrow', text: 'PULSE / OVERVIEW' }),
+      el('h1', { class: 'overview-title', text: '基础设施概览' }),
+      el('p', { class: 'overview-description', text: '服务器状态、资源负载与网络表现，一览掌握。' }),
+    ),
+    el('span', { class: 'overview-badge', text: '全局监控' }),
+  );
+  view.append(overview, statsGrid, regionRow, toolbar, groupsBox);
   renderList();
   refreshStats();
   // 在线汇率就绪后刷新一次剩余价值（缓存命中时同步返回）
