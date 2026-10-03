@@ -1570,9 +1570,8 @@ export async function renderHome(root, ctx) {
     { class: 'overview-head' },
     el('div', { class: 'overview-copy' },
       el('p', { class: 'overview-eyebrow', text: 'SAKURA / PULSE' }),
-      el('p', { class: 'overview-description', text: '服务器状态、资源负载与网络表现，一览掌握。' }),
+      el('p', { class: 'overview-description', text: 'Server status, resource usage, and network performance at a glance.' }),
     ),
-    el('span', { class: 'overview-badge', text: '全局监控' }),
     el('img', { class: 'sakura-girl', src: 'assets/sakura-girl.webp', alt: '', 'aria-hidden': 'true' }),
   );
   view.append(overview, statsGrid, regionRow, toolbar, filterSummary, groupsBox);
