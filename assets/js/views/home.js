@@ -1570,7 +1570,7 @@ export async function renderHome(root, ctx) {
     { class: 'overview-head' },
     el('div', { class: 'overview-copy' },
       el('p', { class: 'overview-eyebrow', text: 'SAKURA / PULSE' }),
-      el('p', { class: 'overview-description', text: 'Server status, resource usage, and network performance at a glance.' }),
+      el('p', { class: 'overview-description', text: 'Your servers, at a glance.' }),
     ),
     el('img', { class: 'sakura-girl', src: 'assets/sakura-girl.webp', alt: '', 'aria-hidden': 'true' }),
   );
